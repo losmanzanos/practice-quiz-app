@@ -1,0 +1,159 @@
+/* generic/page setup */
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	/*background: url(images/20721642.jpg) fixed;*/
+	background-size: cover;
+	background-position: center;
+	text-align: center;
+	padding: 50px;
+	font-family: 'Reenie Beanie', cursive;
+	margin: auto 25px;
+}
+
+/* header */
+
+header {
+	text-align: center;
+	width: auto;
+}
+
+h1 {
+	font-family: 'Creepster', cursive;
+	font-size: 48px;
+	color: #f8a0e9;
+	padding: 5px 0;
+	-webkit-text-stroke: 3px black;
+}
+
+/* main */
+
+main {
+	font-size: 30px;
+    border: 5px solid;
+    padding: 20px;
+	margin: auto 50px;
+	display: flex;
+    align-items: center;
+	justify-content: center;
+	background-color: lemonchiffon;
+}
+
+.flex {
+	flex-direction: column;
+}
+
+button {
+	margin: 5px auto;
+	padding: 5px 10px;
+	background-color: #f8a0e9;
+	border: 3px solid black;
+	text-align: center;
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: bold;
+	outline: none;	
+}
+
+button:hover {
+	cursor: url('images/hot-dog.png'), default;
+}
+
+.startButton {
+	margin: 5px auto;
+	padding: 5px 10px;
+	background-color: #f8a0e9;
+	border: 3px solid black;
+	text-align: center;
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: bold;
+	outline: none;
+}
+
+.startButton:hover {
+	cursor: url('images/hot-dog.png'), default;
+}
+
+/* questions */
+
+ul {
+	padding: none;
+	padding-inline-start: 0px;
+}
+
+li {
+	list-style: none;
+	display: inline-block;
+	padding: 0 25px;
+	font-size: 24px;
+	padding-bottom: 25px;
+}
+
+.submit {
+	margin: 5px auto;
+	padding: 5px 10px;
+	background-color: #f8a0e9;
+	border: 3px solid black;
+	text-align: center;
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: bold;
+	outline: none;
+}
+
+.restart {
+	margin: 5px auto;
+	padding: 5px 10px;
+	background-color: #f8a0e9;
+	border: 3px solid black;
+	text-align: center;
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: bold;
+	outline: none;
+}
+
+.restart:hover {
+	cursor: url('images/hot-dog.png'), default;
+}
+
+/* ------ adjust font & margin/padding sizes on small screens ------ */
+
+@media screen and (max-width: 768px) {
+    h1 {
+		font-family: 'Creepster', cursive;
+		font-size: 36px;
+		padding: 5px 0;
+		margin: none;
+	}
+
+	main {
+		border: 3px solid;
+		padding: 20px;
+		margin: auto 15px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.startButton {
+		margin: 5px auto;
+		padding: 5px 10px;
+		background-color: #f8a0e9;
+		border: 2px solid black;
+		text-align: center;
+		text-decoration: none;
+		font-size: 20px;
+		font-weight: bold;
+		outline: none;
+	}
+}
