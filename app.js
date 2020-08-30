@@ -151,6 +151,10 @@ function startEvent() {
   render();
 }
 
+/* 
+FIX THIS FUNCTION!!!
+*/
+
 function answerEvent(e) {
   e.preventDefault();
   const response = e.target.answer.value;
