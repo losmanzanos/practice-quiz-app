@@ -1,48 +1,7 @@
 /* 
-=========
-Constants 
-=========
-*/
-
-const store = {
-  questions: [
-    {
-      question: 'What color is the sky?',
-      answers: [
-        'blue',
-        'pink and purple spotted',
-        'pizza',
-        '22'
-      ],
-      correctAnswer: 'blue',
-      explanation: 'This sky is blue. Duh.'
-    },
-    {
-      question: 'My name is Chad. What\'s my name?',
-      answers: [
-        'Susan',
-        'pizza',
-        'Chad',
-        '22'
-      ],
-      correctAnswer: 'Chad',
-      explanation: 'Really...?'
-    }
-  ],
-  quizStarted: false,
-  questionNumber: 0,
-  score: 0,
-  page: 'start',
-
-  currentQuestionState: {
-    answerArray: []
-  }
-};
-
-/* 
-================
+==============
 HTML Templates 
-================
+==============
 */
 
 function startRender() {
@@ -56,13 +15,13 @@ function questionRender() {
   const question = store.questions[store.questionNumber]
   return `
     <li>Question: <span class="questionNumber">${store.questionNumber + 1}</span>/${store.questions.length}</li>
-    <li>Score: <span class="score">0</span></li>
+    <li>Score: <span class="score">${store.score}</span></li>
 
     <form>
       ${question.question}
       <br>
-      ${question.answers.map(answers=>`<input type="radio"> ${answers}`).join('<br>')}
       <br>
+      ${question.answers.map(answers => `<div class="hover"><input type="radio" name="answer" value="${answers}" required> ${answers}</div>`).join('\n')}
       <br>
       <button>Submit</button>
     </form>
@@ -79,7 +38,7 @@ function generateAnswers(answers) {
   return answerArray.map(answer => stringifyAnswerArray(answer)).join('');
 }
 
-function stringifyAnswerArray(answer){
+function stringifyAnswerArray(answer) {
   let questionNumber = store.questionNumber;
   let name = store.questions[questionNumber].answers.indexOf(answer);
 
@@ -95,12 +54,23 @@ function stringifyAnswerArray(answer){
 }
 
 function feedbackRender() {
-  return `
+  const question = store.questions[store.questionNumber]
+  if (store.answer == true) {
+    return `
     <div>You got the answer correct!</div>
-    <div>Sorry, you got the answer wrong.</div>
+    <br>
+    <p>🙏</p>
     <br>
     <button class="next startButton">Next</button>
-  `
+    `
+  } else {
+    return `
+    <div>Sorry, you got the answer wrong.</div>
+    <br>
+    ${question.explanation}
+    <button class="next startButton">Next</button>
+    `
+  }
 }
 
 function scoreRender() {
@@ -109,19 +79,19 @@ function scoreRender() {
       The quiz is over.
     </p>
     <p>You scored ${store.score} out of ${store.questions.length}</p>
-    <button class="restart startButton">Restart</button>
+    <button class="restart">Restart</button>
   `
 }
 
 /* 
-================
-Render Functions 
-================
+==================
+Render Function(s) 
+==================
 */
 
 function render() {
   let html;
-  if (store.page == 'start'){
+  if (store.page == 'start') {
     html = startRender();
   } else if (store.page == 'question') {
     html = questionRender();
@@ -139,7 +109,7 @@ Event Listeners
 =============== 
 */
 
-function eventListeneers () {
+function eventListeneers() {
   $('main').on('click', '.startButton', startEvent);
   $('main').on('submit', 'form', answerEvent);
   $('main').on('click', '.next', nextEvent);
@@ -151,28 +121,34 @@ function startEvent() {
   render();
 }
 
-/* 
-FIX THIS FUNCTION!!!
-*/
-
 function answerEvent(e) {
   e.preventDefault();
   const response = e.target.answer.value;
+  const question = store.questions[store.questionNumber]
   if (response === question.correctAnswer) {
-  store.score++;
-  store.answer = true;
+    store.score++;
+    store.answer = true;
   } else {
-  store.answer = false;
+    store.answer = false;
   }
+  store.page= 'feedback';
+  render();
 }
 
 function nextEvent() {
-  store.page = 'score';
+  store.questionNumber++;
+  if (store.questionNumber < store.questions.length) {
+    store.page = 'question';
+  } else {
+    store.page = 'score';
+  }
   render();
 }
 
 function restartEvent() {
-  store.page = 'start';
+  store.questionNumber = 0;
+  store.score = 0;
+  store.page = 'question';
   render();
 }
 

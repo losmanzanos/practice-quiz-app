@@ -1,4 +1,8 @@
-/* generic/page setup */
+/* 
+==============================
+Page Setup
+==============================
+*/
 
 * {
 	box-sizing: border-box;
@@ -10,16 +14,21 @@ html, body {
 }
 
 body {
-	/*background: url(images/20721642.jpg) fixed;*/
-	background-size: cover;
-	background-position: center;
+	background: url(images/Big.png);
+	background-repeat: no-repeat;
+	background-position: top;
+	background-position-x: right;
 	text-align: center;
 	padding: 50px;
 	font-family: 'Reenie Beanie', cursive;
 	margin: auto 25px;
 }
 
-/* header */
+/* 
+==============================
+Header
+==============================
+*/
 
 header {
 	text-align: center;
@@ -34,7 +43,11 @@ h1 {
 	-webkit-text-stroke: 3px black;
 }
 
-/* main */
+/* 
+==============================
+Main
+==============================
+*/
 
 main {
 	font-size: 30px;
@@ -83,7 +96,11 @@ button:hover {
 	cursor: url('images/hot-dog.png'), default;
 }
 
-/* questions */
+/*
+==============================
+Questions
+==============================
+*/
 
 ul {
 	padding: none;
@@ -126,23 +143,56 @@ li {
 	cursor: url('images/hot-dog.png'), default;
 }
 
-/* ------ adjust font & margin/padding sizes on small screens ------ */
+.hover:hover {
+	color: #f8a0e9;
+}
+
+/*
+==============================
+Media Queries
+==============================
+*/
 
 @media screen and (max-width: 768px) {
+	body {
+		background: url(images/20721642.jpg) fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding: 25px;
+		margin: none;
+	}
+
     h1 {
 		font-family: 'Creepster', cursive;
 		font-size: 36px;
 		padding: 5px 0;
 		margin: none;
+		-webkit-text-stroke: 1px black;
+	}
+
+	h3 {
+		font-size: 22px;
+	}
+
+	legend, button, label, ul, li, div {
+		font-size: 18px;
+	}
+
+	legend, label, ul, li {
+		flex-direction: column;
+		align-content: center;
+		justify-items: center;
 	}
 
 	main {
-		border: 3px solid;
-		padding: 20px;
-		margin: auto 15px;
+		border: 2px solid;
+		padding: 15px;
+		margin: auto;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		box-shadow: 5px 5px 10px #000000
 	}
 
 	.startButton {
