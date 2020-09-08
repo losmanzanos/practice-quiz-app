@@ -83,6 +83,7 @@ function feedbackRender() {
     <br>
     ${question.explanation}
     <br>
+    <img src="images/${question.image}" width="80%" height="auto">
     <br>
     <button class="next startButton">Next</button>
     <br>
