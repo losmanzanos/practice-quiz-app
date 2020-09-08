@@ -6,24 +6,31 @@ HTML Templates
 
 function startRender() {
   return `
-    <p>Hello.</p>
+    <p>(Not really.)</p>
     <button type="button" class="startButton">Start!</button>
   `
 }
 
 function questionRender() {
+  $('main').css('background-color', 'lemonchiffon')
   const question = store.questions[store.questionNumber]
   return `
-    <li>Question: <span class="questionNumber">${store.questionNumber + 1}</span>/${store.questions.length}</li>
-    <li>Score: <span class="score">${store.score}</span></li>
+    <div class="results">
+      <li>Question: <span class="questionNumber">${store.questionNumber + 1}</span>/${store.questions.length}</li>
+      <li>Score: <span class="score">${store.score}</span></li>
+    </div>
 
     <form>
-      ${question.question}
-      <br>
-      <br>
-      ${question.answers.map(answers => `<div class="hover"><input type="radio" name="answer" value="${answers}" required> ${answers}</div>`).join('\n')}
-      <br>
-      <button>Submit</button>
+      <div class="grid">
+        <div id="quiz">
+          ${question.question}
+          <br>
+          <br>
+          ${question.answers.map(answers => `<div class="hover"><input type="radio" id="answer" name="answer" value="${answers}" required> ${answers}</div>`).join('\n')}
+          <br>
+        </div>
+        <button>Submit</button>
+      </div>
     </form>
   `
 }
@@ -56,19 +63,30 @@ function stringifyAnswerArray(answer) {
 function feedbackRender() {
   const question = store.questions[store.questionNumber]
   if (store.answer == true) {
+    $('main').css('background-color', 'rgb(164, 238, 164)')
     return `
-    <div>You got the answer correct!</div>
+    <div class="yes">
+    <div id="result" class="green">You got the answer correct!</div>
     <br>
     <p>🙏</p>
     <br>
     <button class="next startButton">Next</button>
+    <br>
+    <br>
+    </div>
     `
   } else {
+    $('main').css('background-color', 'rgb(245, 186, 186)')
     return `
-    <div>Sorry, you got the answer wrong.</div>
+    <div class="no">
+    <div id="result" class="red">Sorry, you got the answer wrong.</div>
     <br>
     ${question.explanation}
+    <br>
+    <br>
     <button class="next startButton">Next</button>
+    <br>
+    </div>
     `
   }
 }

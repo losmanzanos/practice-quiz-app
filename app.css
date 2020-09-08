@@ -40,7 +40,7 @@ h1 {
 	font-size: 48px;
 	color: #f8a0e9;
 	padding: 5px 0;
-	-webkit-text-stroke: 3px black;
+	-webkit-text-stroke: 2px black;
 }
 
 /* 
@@ -51,7 +51,7 @@ Main
 
 main {
 	font-size: 30px;
-    border: 5px solid;
+    border: 5px solid #cbcbcb;
     padding: 20px;
 	margin: auto 50px;
 	display: flex;
@@ -62,6 +62,7 @@ main {
 
 .flex {
 	flex-direction: column;
+	box-shadow: 10px 10px 20px;
 }
 
 button {
@@ -110,7 +111,7 @@ ul {
 li {
 	list-style: none;
 	display: inline-block;
-	padding: 0 25px;
+	padding: 10px 25px;
 	font-size: 24px;
 	padding-bottom: 25px;
 }
@@ -145,6 +146,50 @@ li {
 
 .hover:hover {
 	color: #f8a0e9;
+}
+
+#result {
+	font-size: 30px;
+}
+
+.no {
+	width: auto;
+	height: auto;
+	margin: none;
+	padding: 5%;
+}
+
+.red {
+	color: red;
+}
+
+.yes {
+	width: auto;
+	height: auto;
+	margin: none;
+	padding: 5%;
+}
+
+.green {
+	color: green;
+}
+
+.results, li {
+	font-size: 30px;
+	font-weight: bolder;
+}
+
+.grid {
+    width: 600px;
+    height: auto;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 10px 50px 10px 50px;
+    border: 2px solid #cbcbcb;
+}
+
+form {
+	padding-bottom: 50px;;
 }
 
 /*
@@ -195,6 +240,15 @@ Media Queries
 		box-shadow: 5px 5px 10px #000000
 	}
 
+	.grid {
+		width: 80%;
+		height: auto;
+		margin: 0 auto;
+		background-color: #fff;
+		padding: 10px 5px;
+		border: 2px solid #cbcbcb;
+	}
+
 	.startButton {
 		margin: 5px auto;
 		padding: 5px 10px;
@@ -205,5 +259,13 @@ Media Queries
 		font-size: 20px;
 		font-weight: bold;
 		outline: none;
+	}
+
+	.hover {
+		padding: 5px 0px;
+	}
+
+	.results, li {
+		font-size: 25px;
 	}
 }
