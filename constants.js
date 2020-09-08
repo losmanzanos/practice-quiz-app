@@ -27,12 +27,12 @@ const store = {
       },
 
       {
-        question: 'The scent of chickens can protect you from what?.',
+        question: 'The scent of chickens can protect you from what?',
         answers: [
           'coyotes',
           'snakes',
           'Malaria',
-          'AIDS'
+          'ranchers'
         ],
         correctAnswer: 'Malaria',
         explanation: 'The correct answer is Malaria.',
